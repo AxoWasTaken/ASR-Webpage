@@ -12,8 +12,19 @@ body {
 header {
     background: #8b0000;
     color: white;
-    padding: 40px 20px;
-    text-align: center;
+    padding: 30px 20px;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.emblem {
+    width: 80px;
+    height: auto;
+    margin-left: 10px;
 }
 
 header h1 {
