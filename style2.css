@@ -1,0 +1,111 @@
+/* ------------------------------
+   CLEAN MODERN AXR LIGHT THEME
+------------------------------ */
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Inter", "Roboto", sans-serif;
+    background: #f5f7fa;
+    color: #1a1d21;
+    line-height: 1.6;
+}
+
+/* Top bar */
+.top-bar, .top-accent {
+    height: 6px;
+    background: #4da3ff;
+}
+
+/* Navigation */
+.simple-links, .nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1rem 0;
+    background: #ffffff;
+    border-bottom: 1px solid #d9dce1;
+}
+
+.simple-links a, .nav-links a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.simple-links a:hover, .nav-links a:hover {
+    color: #4da3ff;
+}
+
+/* Header */
+header {
+    padding: 2rem 1rem;
+    border-bottom: 1px solid #d9dce1;
+    background: #ffffff;
+}
+
+.header-content {
+    max-width: 900px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.emblem {
+    width: 100px;
+    height: auto;
+}
+
+/* Main content */
+main {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+/* Sections */
+section {
+    background: #ffffff;
+    padding: 1.8rem;
+    margin-bottom: 2rem;
+    border-radius: 12px;
+    border: 1px solid #e2e5ea;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+section h2 {
+    color: #2b7bdc;
+    margin-bottom: 1rem;
+}
+
+/* Lists */
+ul {
+    margin-left: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+/* Images */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1rem auto;
+    border-radius: 10px;
+    border: 1px solid #e2e5ea;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: #555;
+    border-top: 1px solid #d9dce1;
+    margin-top: 3rem;
+    background: #ffffff;
+}
