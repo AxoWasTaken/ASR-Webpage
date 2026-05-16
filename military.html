@@ -19,6 +19,7 @@
             <a href="laws.html">Law</a>
             <a href="news.html">News</a>
             <a href="military.html">Military</a>
+            <button class="theme-toggle" id="themeToggle">🌙</button>
         </div>
     </div>
 </nav>
@@ -38,7 +39,7 @@
 
 <section>
     <h2>AXR Military</h2>
-    <p>We assume you are here because you are interested in joining (or just having a look). The highest rank in the military is the <strong>Militant Director</strong>. To achieve this rank you must have successfully led a legion and demonstrated exceptional military prowess.</p>
+    <p>We assume you are here because you are interested in joining (or just having a look). The highest rank in the military is the <strong>Militant Director</strong>. To achieve this rank you mu[...]
     <p>The AXR military is divided into three legions, each with its own specialized divisions and command structure.</p>
 </section>
 
@@ -65,7 +66,7 @@
 
 <section>
     <h2>Joining the Military</h2>
-    <p>If you're interested in joining the AXR military, contact us through our official channels listed on the <a href="index.html">home page</a>. We're always looking for dedicated individuals to strengthen our forces.</p>
+    <p>If you're interested in joining the AXR military, contact us through our official channels listed on the <a href="index.html">home page</a>. We're always looking for dedicated individuals t[...]
 </section>
 
 </main>
@@ -74,6 +75,25 @@
     <p>Content on this site is licensed under CC BY-NC-SA 3.0 unless otherwise noted.</p>
     <p>Not associated with Mojang or Microsoft.</p>
 </footer>
+
+<script>
+    const themeToggle = document.getElementById('themeToggle');
+    const htmlElement = document.documentElement;
+
+    // Load theme preference from localStorage
+    const currentTheme = localStorage.getItem('theme') || 'dark';
+    if (currentTheme === 'light') {
+        htmlElement.classList.add('light-mode');
+        themeToggle.textContent = '🌞';
+    }
+
+    themeToggle.addEventListener('click', () => {
+        htmlElement.classList.toggle('light-mode');
+        const isLight = htmlElement.classList.contains('light-mode');
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        themeToggle.textContent = isLight ? '🌞' : '🌙';
+    });
+</script>
 
 </body>
 </html>
