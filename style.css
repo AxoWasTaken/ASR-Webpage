@@ -320,12 +320,16 @@ img:hover {
     box-shadow: 0 8px 24px rgba(255, 68, 68, 0.15);
 }
 
-.hero-emblem,
+.hero-emblem {
+    border: none;
+    margin: 0;
+}
+
 .emblem {
     border: none;
     margin: 0;
-    width: 60px;
-    height: 60px;
+    width: 120px;
+    height: 120px;
 }
 
 .image-wide {
