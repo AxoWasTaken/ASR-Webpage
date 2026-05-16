@@ -290,7 +290,7 @@ ul {
 }
 
 ul li {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.2rem;
     color: var(--text-secondary);
     line-height: 1.8;
     transition: var(--transition);
@@ -324,6 +324,8 @@ img:hover {
 .emblem {
     border: none;
     margin: 0;
+    width: 60px;
+    height: 60px;
 }
 
 .image-wide {
