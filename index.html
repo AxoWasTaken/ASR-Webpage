@@ -19,6 +19,7 @@
             <a href="laws.html">Law</a>
             <a href="news.html">News</a>
             <a href="military.html">Military</a>
+            <button class="theme-toggle" id="themeToggle">🌙</button>
         </div>
     </div>
 </nav>
@@ -120,6 +121,25 @@
     <p>Content on this site is licensed under CC BY-NC-SA 3.0 unless otherwise noted.</p>
     <p>Not an official Minecraft website; nor are we associated with Mojang or Microsoft.</p>
 </footer>
+
+<script>
+    const themeToggle = document.getElementById('themeToggle');
+    const htmlElement = document.documentElement;
+
+    // Load theme preference from localStorage
+    const currentTheme = localStorage.getItem('theme') || 'dark';
+    if (currentTheme === 'light') {
+        htmlElement.classList.add('light-mode');
+        themeToggle.textContent = '🌞';
+    }
+
+    themeToggle.addEventListener('click', () => {
+        htmlElement.classList.toggle('light-mode');
+        const isLight = htmlElement.classList.contains('light-mode');
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        themeToggle.textContent = isLight ? '🌞' : '🌙';
+    });
+</script>
 
 </body>
 </html>
