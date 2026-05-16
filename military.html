@@ -19,7 +19,7 @@
             <a href="laws.html">Law</a>
             <a href="news.html">News</a>
             <a href="military.html">Military</a>
-            <button class="theme-toggle" id="themeToggle">🌙</button>
+            <button class="theme-toggle" id="themeToggle">⏾</button>
         </div>
     </div>
 </nav>
@@ -91,7 +91,7 @@
         htmlElement.classList.toggle('light-mode');
         const isLight = htmlElement.classList.contains('light-mode');
         localStorage.setItem('theme', isLight ? 'light' : 'dark');
-        themeToggle.textContent = isLight ? '☀︎' : '🌙';
+        themeToggle.textContent = isLight ? '☀︎' : '⏾';
     });
 </script>
 
