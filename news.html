@@ -174,14 +174,14 @@
     const currentTheme = localStorage.getItem('theme') || 'dark';
     if (currentTheme === 'light') {
         htmlElement.classList.add('light-mode');
-        themeToggle.textContent = '🌞';
+        themeToggle.textContent = '☀︎';
     }
 
     themeToggle.addEventListener('click', () => {
         htmlElement.classList.toggle('light-mode');
         const isLight = htmlElement.classList.contains('light-mode');
         localStorage.setItem('theme', isLight ? 'light' : 'dark');
-        themeToggle.textContent = isLight ? '🌞' : '🌙';
+        themeToggle.textContent = isLight ? '☀︎' : '🌙';
     });
 </script>
 
