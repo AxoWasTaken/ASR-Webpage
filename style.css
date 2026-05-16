@@ -4,8 +4,8 @@
 
 /* Root Variables */
 :root {
-    --primary: #4da3ff;
-    --primary-dark: #3d84cc;
+    --primary: #ff4444;
+    --primary-dark: #cc3333;
     --bg-primary: #0d1117;
     --bg-secondary: #161b22;
     --bg-tertiary: #21262d;
@@ -17,6 +17,17 @@
     --danger: #f85149;
     --radius: 8px;
     --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Light Mode */
+:root.light-mode {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f6f8fa;
+    --bg-tertiary: #eaeef2;
+    --border-color: #d0d7de;
+    --text-primary: #24292f;
+    --text-secondary: #57606a;
+    --text-tertiary: #768390;
 }
 
 /* Reset */
@@ -38,6 +49,7 @@ body {
     color: var(--text-primary);
     line-height: 1.6;
     font-size: 14px;
+    transition: var(--transition);
 }
 
 /* ========================================
@@ -95,6 +107,25 @@ body {
     border-bottom-color: var(--primary);
 }
 
+.theme-toggle {
+    background: none;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius);
+    font-size: 1rem;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-toggle:hover {
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
 /* ========================================
    HERO SECTION
    ======================================== */
@@ -117,7 +148,7 @@ body {
     width: 120px;
     height: 120px;
     object-fit: contain;
-    filter: drop-shadow(0 4px 12px rgba(77, 163, 255, 0.1));
+    filter: drop-shadow(0 4px 12px rgba(255, 68, 68, 0.1));
 }
 
 .hero-text h1 {
@@ -176,7 +207,7 @@ section {
 
 section:hover {
     border-color: var(--primary);
-    box-shadow: 0 4px 16px rgba(77, 163, 255, 0.1);
+    box-shadow: 0 4px 16px rgba(255, 68, 68, 0.1);
 }
 
 section h1 {
@@ -234,7 +265,7 @@ section p i {
 }
 
 .styled-list li {
-    padding: 0.75rem 0 0.75rem 1.5rem;
+    padding: 0.5rem 0 0.5rem 1.5rem;
     color: var(--text-secondary);
     position: relative;
     transition: var(--transition);
@@ -259,7 +290,7 @@ ul {
 }
 
 ul li {
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
     color: var(--text-secondary);
     line-height: 1.8;
     transition: var(--transition);
@@ -286,7 +317,7 @@ img {
 
 img:hover {
     border-color: var(--primary);
-    box-shadow: 0 8px 24px rgba(77, 163, 255, 0.15);
+    box-shadow: 0 8px 24px rgba(255, 68, 68, 0.15);
 }
 
 .hero-emblem,
