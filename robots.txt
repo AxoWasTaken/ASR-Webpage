@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://axowastaken.github.io/AXR/sitemap/sitemap.xml
+Sitemap: https://AxosUnion.github.io/sitemap.xml
