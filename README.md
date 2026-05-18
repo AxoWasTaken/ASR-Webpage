@@ -1,2 +1,2 @@
 # Important!
-This branch (new) is an experimental new branch for the AXR site, the 'main' branch is the old original branch, please do not modify it.
+If you wish to make edits fork it. The branch system just confuses copilot and makes it remove text. You are currently looking at v2.1, do not edit eariler versions.
