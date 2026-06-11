@@ -24,7 +24,7 @@
 /* Light Mode */
 :root.light-mode {
     --bg-primary: #ffffff;
-    --bg-secondary: #f6f8fa;
+    --bg-secondary: #E7E7E7;
     --bg-tertiary: #eaeef2;
     --border-color: #d0d7de;
     --text-primary: #24292f;
