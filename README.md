@@ -15,7 +15,7 @@ I'm assuming you know how to program, if you don't then that might be a bit of a
 - If you are using AI for something please just make sure its got proper instructions on what to do, and make sure its output is safe and error-free. Please proof-read it just to be sure.
 
 ## Security
-If you find a security vulrability, report it privately to @AxoWasTaken. You can contact him using his email address, [AxoWasTaken@outlook.com](mailto:AxoWasTaken@AxoWasTaken). But it doesn't really matter if you send it to the main Axos Union email address anyway, [AxoWasTaken@outlook.com](mailto:AxoWasTaken@AxoWasTaken).
+If you find a security vulrability, report it privately to @AxoWasTaken. You can contact him using his email address, [AxoWasTaken@outlook.com](mailto:AxoWasTaken@AxoWasTaken). But it doesn't really matter if you send it to the main Axos Union email address anyway, [AxosUnion@outlook.com](mailto:AxosUnion@AxoWasTaken).
 
 Also please don't stick viruses and worms in the website, **that is exactly what I don't need** thank you.
 
