@@ -23,3 +23,12 @@ Same with backdoors, rootkits, RATs, Trojans, spyware, logic bombs, and whatever
 
 ## Copyright
 Everything is licensed under 'Attribution 4.0 International', unless otherwise noted. All rights are reserved. @AxoWasTaken owns the repository.
+
+## Editing Notes
+- Each file will have its own page, the page will keep its original filename but with a .html extension (eg. 'file.docx' becomes 'file.docx.html', or 'image.png' becomes 'image.png.html').
+- Main styling is in /-css/style.css, for now everything will be styled using that. However in future an alternative may be used for the archive.
+- Everyone should be able to view LVL0, however higher than that will require an authentication code. Cookies or any local storage will not be used for this and you will have to re-authenticate each time you want to view a LVL0+ file.
+- Files will not be stored in this repository, and they will be stored somewhere else private. Once you have authenticated, the data can be served.
+- Fully describe the edits you have made in your commit. It makes it easier to collaborate.
+- If a script is going to be long, make sure to link it externally in the '-script' directory. If you need to, folder them.
+- Ideally add comments to explain your code, this is not necessary for the HTML or CSS, but it would be helpful anyway. If the code is "advanced", always explain it so if necessary it can be modified and improved later.
