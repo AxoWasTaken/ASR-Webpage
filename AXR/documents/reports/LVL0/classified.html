@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CLASSIFIED — AXR</title>
+  <link rel="icon" type="image/png" href="/-assets/favicon.png">
+  <link rel="stylesheet" href="/-css/style.css">
+  <!--
+    CLASSIFIED PAGE TEMPLATE
+    ========================
+    To set up a new classified document page:
+
+    1. Run encrypt-tool.html locally. Enter the auth code and the OneDrive
+       embed URL for the document. Copy the three output values.
+
+    2. In the <div id="classified-config"> below, paste:
+         data-auth-hash  = the SHA-256 hash output
+         data-enc-url    = the encrypted URL output
+         data-iv         = the IV output
+
+    3. Update the visible page content (title, classification level,
+       document name, description) to match the document.
+
+    4. Save the file as  -pages/<filename>.html  (following the naming
+       convention: original filename + .html, e.g. op-bluebell.docx.html)
+
+    DO NOT store the real OneDrive URL or the plaintext auth code anywhere
+    in this file or in the repository. Only the hash and ciphertext go here.
+  -->
+</head>
+<body>
+
+  <!-- ── Navigation (matches site standard) ── -->
+  <nav class="nav-container">
+    <div class="nav">
+      <a class="nav-logo" href="/index.html">AXR</a>
+      <div class="nav-links">
+        <a href="/index.html">Home</a>
+        <a href="/-pages/laws.html">Law</a>
+        <a href="/-pages/news.html">News</a>
+        <a href="/-pages/military.html">Military</a>
+        <button class="theme-toggle" id="themeToggle">⏾</button>
+      </div>
+    </div>
+  </nav>
+
+  <!--
+    ╔══════════════════════════════════════════════════════════════╗
+    ║  PASTE YOUR THREE VALUES INTO THE DATA ATTRIBUTES BELOW.    ║
+    ║  Leave this div empty — it is invisible on the page.        ║
+    ╚══════════════════════════════════════════════════════════════╝
+  -->
+  <div
+    id="classified-config"
+    hidden
+    data-auth-hash="PASTE_HASH_HERE"
+    data-enc-url="PASTE_ENCRYPTED_URL_HERE"
+    data-iv="PASTE_IV_HERE"
+  ></div>
+
+  <!-- ── Header ── -->
+  <header class="hero" style="background: linear-gradient(135deg, #1a0000 0%, #2d0a0a 100%);">
+    <div class="hero-content">
+      <div class="hero-text">
+        <!--  ▼ Edit the classification level and document title below ▼  -->
+        <p class="subtitle" style="color: #ff4444; letter-spacing: 0.25em; font-weight: 700; text-transform: uppercase;">
+          ⬛ CLASSIFIED — LVL1
+        </p>
+        <h1>Document Title Here</h1>
+        <p class="subtitle">AXR — Axian Media Coalition</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="content">
+
+    <!-- ── Auth gate (shown until correct code is entered) ── -->
+    <section class="card" id="auth-gate">
+      <h2>🔒 Authentication Required</h2>
+      <p>
+        This document is classified. You must provide a valid authentication
+        code to access it. You will need to re-authenticate each time you
+        visit this page.
+      </p>
+
+      <!-- Classification info — edit as appropriate -->
+      <div style="
+        border-left: 3px solid #ff4444;
+        padding: 0.6rem 1rem;
+        margin: 1.2rem 0;
+        background: rgba(255,68,68,0.07);
+        border-radius: 0 6px 6px 0;
+      ">
+        <strong>Classification:</strong> LVL1 — Restricted<br>
+        <strong>Authorised by:</strong> The Sentry<br>
+        <strong>Issued to:</strong> AXR Personnel Only
+      </div>
+
+      <label for="auth-code" style="display:block; margin-bottom: 0.4rem; font-weight: 600;">
+        Authentication Code
+      </label>
+      <input
+        id="auth-code"
+        type="password"
+        autocomplete="off"
+        placeholder="Enter your code…"
+        style="
+          width: 100%;
+          max-width: 340px;
+          padding: 0.55rem 0.8rem;
+          border-radius: 6px;
+          border: 1.5px solid var(--border, #444);
+          background: var(--input-bg, #1a1a1a);
+          color: var(--text, #eee);
+          font-size: 1rem;
+          margin-bottom: 0.9rem;
+          box-sizing: border-box;
+        "
+      >
+      <br>
+      <button
+        id="auth-submit"
+        style="
+          padding: 0.55rem 1.6rem;
+          background: #cc2222;
+          color: #fff;
+          border: none;
+          border-radius: 6px;
+          font-size: 1rem;
+          font-weight: 600;
+          cursor: pointer;
+          letter-spacing: 0.04em;
+        "
+      >
+        Authenticate
+      </button>
+
+      <!-- Spinner (hidden until auth attempt begins) -->
+      <span id="auth-spinner" hidden style="margin-left: 1rem; opacity: 0.7;">
+        Verifying…
+      </span>
+
+      <!-- Error message (hidden until a failed attempt) -->
+      <p id="auth-error" hidden style="color: #ff4444; margin-top: 0.8rem; font-weight: 600;"></p>
+
+      <p style="margin-top: 1.4rem; font-size: 0.85rem; opacity: 0.6;">
+        If you believe you should have access to this document, contact
+        <a href="mailto:AxoWasTaken@outlook.com">AxoWasTaken@outlook.com</a>.
+      </p>
+    </section>
+
+    <!-- ── Document viewer (hidden until auth succeeds) ── -->
+    <section class="card" id="doc-viewer" hidden style="padding: 0.5rem;">
+      <iframe
+        id="doc-frame"
+        src="about:blank"
+        style="
+          width: 100%;
+          height: 80vh;
+          border: none;
+          border-radius: 6px;
+          display: block;
+        "
+        sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+        title="Classified Document"
+      ></iframe>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>Content on this site is licensed under
+      <a href="https://AxosUnion.github.io/LICENSE">Attribution 4.0 International</a>
+      unless otherwise noted. All rights reserved.
+    </p>
+    <p>Not an official Minecraft website; nor are we associated with Mojang or Microsoft.</p>
+  </footer>
+
+  <!-- Theme toggle (matches rest of site) -->
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    const htmlElement = document.documentElement;
+    const currentTheme = localStorage.getItem('theme') || 'dark';
+    if (currentTheme === 'light') {
+      htmlElement.classList.add('light-mode');
+      themeToggle.textContent = '☀︎';
+    }
+    themeToggle.addEventListener('click', () => {
+      htmlElement.classList.toggle('light-mode');
+      const isLight = htmlElement.classList.contains('light-mode');
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+      themeToggle.textContent = isLight ? '☀︎' : '⏾';
+    });
+  </script>
+
+  <!-- Classified auth engine -->
+  <script src="/-script/auth/classified-auth.js"></script>
+
+</body>
+</html>
