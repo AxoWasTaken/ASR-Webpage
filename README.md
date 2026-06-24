@@ -32,3 +32,11 @@ Everything is licensed under 'Attribution 4.0 International', unless otherwise n
 - Fully describe the edits you have made in your commit. It makes it easier to collaborate.
 - If a script is going to be long, make sure to link it externally in the '-script' directory. If you need to, folder them.
 - Ideally add comments to explain your code, this is not necessary for the HTML or CSS, but it would be helpful anyway. If the code is "advanced", always explain it so if necessary it can be modified and improved later.
+
+# Credits
+- @AxoWasTaken
+  - Designed the site
+  - Maintains the site
+- @Duck
+  - Designed the security system
+  - Maintains the security system
