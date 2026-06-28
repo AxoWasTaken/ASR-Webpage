@@ -68,7 +68,7 @@
 
     function translate() {
       const input = document.getElementById("input").value;
-      const words = input.split(/\s+/);
+      const words = input.match(/\b[\w']+\b/g) || []; // Extract words with apostrophes, ignore punctuation
       const output = words.map(w => dict[w.toLowerCase()] || w).join(" ");
       document.getElementById("output").innerText = output;
     }
