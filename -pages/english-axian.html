@@ -7,6 +7,67 @@
     <link rel="icon" type="image/png" href="/-assets/favicon.png">
     <link rel="stylesheet" href="/-css/style.css">
     <link rel="canonical" href="https://axosunion.github.io">
+    <style>
+        #input {
+            width: 100%;
+            min-height: 120px;
+            padding: 1rem;
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            font-family: inherit;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            resize: vertical;
+        }
+
+        #input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 12px rgba(255, 68, 68, 0.3);
+        }
+
+        button {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-bottom: 1.5rem;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 68, 68, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        #output {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            min-height: 100px;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        #output:empty::before {
+            content: 'Translation will appear here...';
+            color: var(--text-tertiary);
+        }
+    </style>
 </head>
 
 <body>
@@ -40,6 +101,7 @@
 <main class="content">
 
     <section>
+          <h2>English to Axian Translator</h2>
           <textarea id="input" placeholder="Enter English text..."></textarea>
           <button onclick="translate()">Translate</button>
           <div id="output"></div>
@@ -53,22 +115,38 @@
 </footer>
 
 <script>
-        let dict = {};
+    let dict = {};
 
     // Load CSV
     fetch("/-assets/csv/axian.csv")
       .then(res => res.text())
       .then(text => {
-        const lines = text.split("\n").slice(1); // skip header
-        for (const line of lines) {
-          const [english, axian] = line.split(",");
-          if (english && axian) dict[english.trim().toLowerCase()] = axian.trim();
+        const lines = text.split("\n");
+        for (let i = 1; i < lines.length; i++) {
+          const line = lines[i].trim();
+          if (line) {
+            const [english, axian] = line.split(",");
+            if (english && axian) {
+              dict[english.trim().toLowerCase()] = axian.trim();
+            }
+          }
         }
-      });
+      })
+      .catch(err => console.error("Error loading translation dictionary:", err));
 
     function translate() {
+      if (Object.keys(dict).length === 0) {
+        document.getElementById("output").innerText = "Dictionary is still loading. Please try again in a moment.";
+        return;
+      }
+
       const input = document.getElementById("input").value;
-      const words = input.match(/\b[\w']+\b/g) || []; // Extract words with apostrophes, ignore punctuation
+      if (!input.trim()) {
+        document.getElementById("output").innerText = "";
+        return;
+      }
+
+      const words = input.match(/\b[\w']+\b/g) || [];
       const output = words.map(w => dict[w.toLowerCase()] || w).join(" ");
       document.getElementById("output").innerText = output;
     }
