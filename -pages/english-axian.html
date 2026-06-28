@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AXR — Axos Republic</title>
+    <link rel="icon" type="image/png" href="/-assets/favicon.png">
+    <link rel="stylesheet" href="/-css/style.css">
+    <link rel="canonical" href="https://axosunion.github.io">
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav class="nav-container">
+    <div class="nav">
+        <a class="nav-logo" href="/index.html">AXR</a>
+        <div class="nav-links">
+            <a href="/index.html">Home</a>
+            <a href="/-pages/laws.html">Law</a>
+            <a href="/-pages/news.html">News</a>
+            <a href="/-pages/military.html">Military</a>
+            <a href="/-pages/dev/">Dev</a>
+            <button class="theme-toggle" id="themeToggle">⏾</button>
+        </div>
+    </div>
+</nav>
+
+<!-- Header -->
+<header class="hero">
+    <div class="hero-content">
+        <img src="/-assets/Axian Wreath wt.png" alt="AXR Emblem" class="hero-emblem">
+        <div class="hero-text">
+            <h1>Axos Republic</h1>
+            <p class="subtitle">Official Website of the AXR</p>
+        </div>
+    </div>
+</header>
+
+<main class="content">
+
+    <section>
+          <textarea id="input" placeholder="Enter English text..."></textarea>
+          <button onclick="translate()">Translate</button>
+          <div id="output"></div>
+    </section>
+
+</main>
+
+<footer class="footer">
+    <p>Content on this site is licensed under <a href="https://AxosUnion.github.io/LICENSE">Attribution 4.0 International</a> unless otherwise noted. All rights reserved.</p>
+    <p>Not an official Minecraft website; nor are we associated with Mojang or Microsoft.</p>
+</footer>
+
+<script>
+        let dict = {};
+
+    // Load CSV
+    fetch("/-assets/csv/axian.csv")
+      .then(res => res.text())
+      .then(text => {
+        const lines = text.split("\n").slice(1); // skip header
+        for (const line of lines) {
+          const [english, axian] = line.split(",");
+          if (english && axian) dict[english.trim().toLowerCase()] = axian.trim();
+        }
+      });
+
+    function translate() {
+      const input = document.getElementById("input").value;
+      const words = input.split(/\s+/);
+      const output = words.map(w => dict[w.toLowerCase()] || w).join(" ");
+      document.getElementById("output").innerText = output;
+    }
+</script>
+ 
+<script>
+    const themeToggle = document.getElementById('themeToggle');
+    const htmlElement = document.documentElement;
+
+    // Load theme preference from localStorage
+    const currentTheme = localStorage.getItem('theme') || 'dark';
+    if (currentTheme === 'light') {
+        htmlElement.classList.add('light-mode');
+        themeToggle.textContent = '☀︎';
+    }
+
+    themeToggle.addEventListener('click', () => {
+        htmlElement.classList.toggle('light-mode');
+        const isLight = htmlElement.classList.contains('light-mode');
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        themeToggle.textContent = isLight ? '☀︎' : '⏾';
+    });
+</script>
+
+</body>
+</html>
