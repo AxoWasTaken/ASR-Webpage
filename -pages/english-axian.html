@@ -63,7 +63,7 @@
             line-height: 1.6;
         }
 
-        #output:empty::before {
+        .translator-empty::before {
             content: 'Translation will appear here...';
             color: var(--text-tertiary);
         }
@@ -103,8 +103,8 @@
     <section>
           <h2>English to Axian Translator</h2>
           <textarea id="input" placeholder="Enter English text..."></textarea>
-          <button onclick="translate()">Translate</button>
-          <div id="output"></div>
+          <button id="translateBtn">Translate</button>
+          <div id="output" class="translator-empty"></div>
     </section>
 
 </main>
@@ -116,39 +116,71 @@
 
 <script>
     let dict = {};
+    let dictionaryLoaded = false;
+
+    console.log("Starting translator initialization...");
 
     // Load CSV
     fetch("/-assets/csv/axian.csv")
       .then(res => res.text())
       .then(text => {
+        console.log("CSV loaded, parsing...");
         const lines = text.split("\n");
-        for (let i = 1; i < lines.length; i++) {
+        
+        for (let i = 0; i < lines.length; i++) {
           const line = lines[i].trim();
-          if (line) {
-            const [english, axian] = line.split(",");
+          if (line && line.includes(",")) {
+            const parts = line.split(",");
+            const english = parts[0].trim().toLowerCase();
+            const axian = parts[1].trim();
             if (english && axian) {
-              dict[english.trim().toLowerCase()] = axian.trim();
+              dict[english] = axian;
+              console.log(`Loaded: "${english}" -> "${axian}"`);
             }
           }
         }
+        
+        dictionaryLoaded = true;
+        console.log("Dictionary loaded with", Object.keys(dict).length, "entries");
       })
       .catch(err => console.error("Error loading translation dictionary:", err));
 
+    // Attach translate function to button
+    document.getElementById("translateBtn").addEventListener("click", function(e) {
+      e.preventDefault();
+      translate();
+    });
+
     function translate() {
-      if (Object.keys(dict).length === 0) {
+      console.log("Translate called. Dictionary loaded:", dictionaryLoaded, "Entries:", Object.keys(dict).length);
+
+      if (!dictionaryLoaded || Object.keys(dict).length === 0) {
         document.getElementById("output").innerText = "Dictionary is still loading. Please try again in a moment.";
+        console.warn("Dictionary not ready yet");
         return;
       }
 
       const input = document.getElementById("input").value;
+      console.log("Input text:", input);
+
       if (!input.trim()) {
         document.getElementById("output").innerText = "";
+        document.getElementById("output").classList.add("translator-empty");
         return;
       }
 
       const words = input.match(/\b[\w']+\b/g) || [];
-      const output = words.map(w => dict[w.toLowerCase()] || w).join(" ");
+      console.log("Extracted words:", words);
+
+      const output = words.map(w => {
+        const translated = dict[w.toLowerCase()];
+        console.log(`"${w}" -> "${translated || w}"`);
+        return translated || w;
+      }).join(" ");
+
+      console.log("Final output:", output);
       document.getElementById("output").innerText = output;
+      document.getElementById("output").classList.remove("translator-empty");
     }
 </script>
  
