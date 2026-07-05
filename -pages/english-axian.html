@@ -169,7 +169,7 @@
         return;
       }
 
-      const words = input.match(/\b[\w']+\b/g) || [];
+      const words = input.match(/\b[\w]+(?:'[\w]+)*\b/g) || [];
       console.log("Extracted words:", words);
 
       const output = words.map(w => {
