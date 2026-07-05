@@ -168,14 +168,11 @@
         return;
       }
 
-      const words = input.match(/\b[\w]+(?:'[\w]+)*\b/g) || [];
-      console.log("Extracted words:", words);
-
-      const output = words.map(w => {
+      const output = input.replace(/\b[\w]+(?:'[\w]+)*\b/g, (w) => {
         const translated = dict[w.toLowerCase()];
         console.log(`"${w}" -> "${translated || w}"`);
         return translated || w;
-      }).join(" ");
+      });
 
       console.log("Final output:", output);
       document.getElementById("output").innerText = output;
