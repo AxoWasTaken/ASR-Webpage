@@ -129,10 +129,10 @@
         
         for (let i = 0; i < lines.length; i++) {
           const line = lines[i].trim();
-          if (line && line.includes(",")) {
-            const parts = line.split(",");
-            const english = parts[0].trim().toLowerCase();
-            const axian = parts[1].trim();
+          const firstCommaIndex = line.indexOf(",");
+          if (line && firstCommaIndex !== -1) {
+            const english = line.slice(0, firstCommaIndex).trim().toLowerCase();
+            const axian = line.slice(firstCommaIndex + 1).trim();
             if (english && axian) {
               dict[english] = axian;
             }
