@@ -37,6 +37,5 @@ Everything is licensed under 'Attribution 4.0 International', unless otherwise n
 - @AxoWasTaken
   - Designed the site
   - Maintains the site
-- '@Duck'
+- 'Duck'
   - Designed the security system
-  - Maintains the security system
