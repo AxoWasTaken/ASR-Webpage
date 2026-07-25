@@ -2,7 +2,7 @@ name: Deploy static site
 
 on:
   push:
-    branches: [ v2.1 ]
+    branches: [ v3 ]
   workflow_dispatch:
 
 permissions:
